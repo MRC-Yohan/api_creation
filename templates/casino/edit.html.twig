@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Casino{% endblock %}
+
+{% block body %}
+    <h1>Edit Casino</h1>
+
+    {{ include('casino/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('casino_index') }}">back to list</a>
+
+    {{ include('casino/_delete_form.html.twig') }}
+{% endblock %}

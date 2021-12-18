@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run composer require symfony/webpack-encore-bundle
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
+
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="http://localhost/logout">Se deconnecter</a></li>
+        <li><a href="http://localhost/register">S'inscrire</a></li>
+        <li><a href="http://localhost/login">Se connecter</a></li>
+        <li><a href="{{ path('casino_index') }}">Casino</a></li>
+        <li><a href="{{ path('game_index') }}">Game</a></li>
+        <li><a href="{{ path('monitoring_index') }}">Monitoring</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ path('casino_index') }}">Casino</a></li>
+    <li><a href="{{ path('game_index') }}">Game</a></li>
+    <li><a href="{{ path('monitoring_index') }}">Monitoring</a></li>
+  </ul>
+  </nav>
+  {% block body %} 
+
+{% endblock %}
+<script>
+        {% for type, messages in app.flashes() %}
+            {% for message in messages %}
+                M.toast({html: '{{ message }}', classes: '{{ type }}'});
+            {% endfor %}
+        {% endfor %}
+
+        $(form).ready(function() {
+          $('select').material_select();
+        });
+    </script>
+</body>
+</html>

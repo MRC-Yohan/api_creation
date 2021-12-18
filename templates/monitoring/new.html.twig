@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Monitoring{% endblock %}
+
+{% block body %}
+    <h1>Create new Monitoring</h1>
+
+    {{ include('monitoring/_form.html.twig') }}
+
+    <a href="{{ path('monitoring_index') }}">back to list</a>
+{% endblock %}
